@@ -1,0 +1,97 @@
+<html>
+<head>
+    <style>
+        /* css untuk styling */
+        /* menengahkan seluruh teks*/
+        .container{
+            text-align: center;
+        }
+        /* menggunakan tata letak flex(inline) */
+        .inputNilai, .hasilIndex {
+            display: flex;
+            justify-content: center;
+        }
+        
+        /* atur besar dan jarak input text */
+        input[type="text"]{
+            height: 25px;
+            margin-top: 10px;
+        }
+        
+        /* meratakan input */
+        .inputNilai input[type="text"]{
+            margin-left: 200px;
+        }
+
+        .hasilIndex input[type="text"]{
+            margin-left: 88px;
+        }
+
+        /* css selector untuk button */
+        div > button {
+            height: 30px;
+            cursor: pointer;
+            border: none;
+            border-radius: 10px;
+            background-color: #435334; 
+            color: whitesmoke;
+            display: block;
+            margin: auto;
+        }
+    </style>
+
+    <script type="text/javascript">
+        // membuat fungsi untuk dipanggil saat button klik
+        function cekIndek() 
+        {    
+            let nilai = document.getElementById('input-nilai').value; // mengambil nilai dari input box dengan id (input nilai)
+            let hasil = document.getElementById("Index");// pointer ke input box id index untuk operasi nantinya
+            let indeks; //index tidak ada nilai karena untuk variabel ini berfungsi menyimpan
+            
+            // operasi percabangan untuk menentukan kondisi akhir dari nilai dan hasil
+            if((nilai > 80) && (nilai <=100 )){
+                indeks = "A";
+            }else if((nilai > 65) && (nilai <= 80)){
+                indeks = "B";
+            }else if((nilai > 55) && (nilai <= 64)){
+                indeks = "C";
+            }else if((nilai > 40) && (nilai <= 54)){
+                indeks = "D";
+            }else if(nilai <= 40){
+                indeks = "E";
+            }else{
+                // jika terjadi inputan tidak valid akan keluar alert dan mengosongkan input nilai & value
+                alert("Inputan Salah!!!, Masukkan bilangan bulat dari 0 - 100");
+                nilai = ""
+                hasil.value = " "
+            }
+            // variabel hasil mengambil nilai variabel indeks setelah variabel nilai(inputan user) diproses menjadi indeks
+            hasil.value = indeks;
+        
+        }
+    
+    </script>
+    <title>Indeks Prestasi 2210501051</title>
+</head>
+
+<!-- kerangka html -->
+<body bgcolor="#CEDEBD">
+    <!-- div container untuk membungkus -->
+    <div class="container">
+        <h1 style="color: #435334;">Perhitungan Nilai Bilangan Bulat Dengan Javascript</h1>
+        <h3 style="color: #597e37; "><i>Refresh web untuk reset / bisa ditimpa</i></h3>
+        <!-- div input nilai untuk keterangan dan inputan user -->
+        <div class="inputNilai">
+            <p>Nilai Anda :</p>
+            <input type="text" id="input-nilai">
+        </div>
+        <!-- div hasil index untuk keterangan dan hasil dari operasi di button -->
+        <div class="hasilIndex">
+            <p>Anda mendapatkan Predikat :</p>
+            <input type="text" id="Index">
+        </div>
+        <!-- pemanggil fungsi dari javascript -->
+        <button onclick="cekIndek()">Hasilnya</button>
+    </div>
+</body>
+</html>
